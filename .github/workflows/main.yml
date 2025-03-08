@@ -35,4 +35,7 @@ jobs:
     - name: Run script
       env:
         MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}  # 使用自定义的 Token
+        REPO_NAME: ${{ secrets.REPO_NAME }}
+        FILE_PATH: ${{ secrets.FILE_PATH }}
+        WEBPAGE_URL: ${{ secrets.WEBPAGE_URL }} 
       run: python script.py
