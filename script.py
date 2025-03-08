@@ -8,9 +8,18 @@ if GITHUB_TOKEN is None:
     print("Error: MY_GITHUB_TOKEN is not set.")
     exit(1)
 
-REPO_NAME = "jzhou9096/jilianip"  # 替换为你的仓库
-FILE_PATH = "FLsip.txt"  # 替换为文件路径（如 data.txt）
-WEBPAGE_URL = "https://tqdg.linlinle559.workers.dev"  # 替换为目标网页 URL
+REPO_NAME = os.getenv("REPO_NAME")
+FILE_PATH = os.getenv("FILE_PATH")
+WEBPAGE_URL = os.getenv("WEBPAGE_URL")
+
+# 调试输出
+print(f"DEBUG: REPO_NAME={REPO_NAME}")
+print(f"DEBUG: FILE_PATH={FILE_PATH}")
+print(f"DEBUG: WEBPAGE_URL={WEBPAGE_URL}")
+
+if not REPO_NAME or not FILE_PATH or not WEBPAGE_URL:
+    print("Error: One or more required environment variables (REPO_NAME, FILE_PATH, WEBPAGE_URL) are not set.")
+    exit(1)
 
 def fetch_webpage_content(url):
     import requests
